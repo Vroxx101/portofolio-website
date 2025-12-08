@@ -130,17 +130,12 @@ Contributions are welcome! Here's how you can help:
 
 If you find any bugs or have suggestions for improvements, please open an issue in the repository.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 About the Author
 
 This portfolio was created by **Fathir**, a passionate Full-stack Developer dedicated to creating beautiful, responsive and interactive websites. Connect with me on social media:
 
-- LinkedIn: [Your LinkedIn Profile]
-- GitHub: [Your GitHub Profile]
-- Email: [Your Email]
+- GitHub: [Vroxx101]
+- Instagram [_Fathirr17]
 
 ---
 
