@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Poppins, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { LoadingProvider } from "@/contexts/loading-context"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -25,7 +26,9 @@ export const metadata: Metadata = {
     description: "Full-stack Developer Portfolio",
     type: "website",
   },
-    generator: 'v0.app'
+  icons: {
+    icon: 'logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -40,9 +43,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body
-        className={`${poppins.variable} ${montserrat.variable} font-sans antialiased bg-dark text-light overflow-x-hidden`}
+        className={`${poppins.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground overflow-x-hidden`}
       >
-        {children}
+        <LoadingProvider>
+          {children}
+        </LoadingProvider>
         <Analytics />
       </body>
     </html>

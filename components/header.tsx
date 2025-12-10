@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react"
+import { motion } from 'framer-motion'
 import HoverAnimation from "./hover-animation"
 
 const navItems = [
@@ -38,43 +39,69 @@ export default function Header() {
   const handleNavClick = () => setIsOpen(false)
 
   // Fungsi untuk scroll ke section dengan animasi halus
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    const targetId = href.replace('#', '')
-    const targetSection = document.getElementById(targetId)
+const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault()
+  const targetId = href.replace('#', '')
+  const targetSection = document.getElementById(targetId)
 
-    if (targetSection) {
+  if (targetSection) {
+    // Close mobile menu first
+    setIsOpen(false)
+
+    // Wait for menu close animation
+    setTimeout(() => {
+      const headerOffset = 80
+      const elementPosition = targetSection.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
       window.scrollTo({
-        top: targetSection.offsetTop - 80, // Offset untuk header
+        top: offsetPosition,
         behavior: 'smooth'
       })
-    }
+    }, 300) // match your animation duration
   }
+}
+
 
   return (
-    <header
+    <motion.header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? "glass-card rounded-none border-x-0 border-t-0 shadow-lg" : "bg-transparent"
       }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: 2.8 }}
     >
       <div className="container-custom">
         <div className="flex justify-between items-center py-5">
           {/* Brand */}
-          <HoverAnimation scale={1.05} duration={0.3}>
-            <a
-              href="#home"
-              onClick={(e) => scrollToSection(e, '#home')}
-              className="text-2xl font-serif font-bold text-primary tracking-tight"
-            >
-              Fathir
-            </a>
-          </HoverAnimation>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 3.0 }}
+          >
+            <HoverAnimation scale={1.05} duration={0.3}>
+              <a
+                href="#home"
+                onClick={(e) => scrollToSection(e, '#home')}
+                className="text-2xl font-serif font-bold text-primary tracking-tight"
+              >
+                Fathir
+              </a>
+            </HoverAnimation>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <ul className="flex items-center gap-8">
               {navItems.map((item, index) => (
-                <li key={index} className="relative group">
+                <motion.li
+                  key={index}
+                  className="relative group"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 3.2 + index * 0.1 }}
+                >
                   {item.children ? (
                     <>
                       <HoverAnimation scale={1.05} duration={0.2}>
@@ -112,13 +139,18 @@ export default function Header() {
                       </a>
                     </HoverAnimation>
                   )}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-3">
+          <motion.div
+            className="flex items-center gap-3"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 3.8 }}
+          >
             <HoverAnimation scale={1.1} duration={0.2}>
               <button
                 onClick={toggleTheme}
@@ -138,12 +170,15 @@ export default function Header() {
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </HoverAnimation>
-          </div>
+          </motion.div>
         </div>
 
         {/* Mobile Navigation */}
-        <div
+        <motion.div
           className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-6" : "max-h-0"}`}
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
+          transition={{ duration: 0.3 }}
         >
           <nav className="glass-card p-4 rounded-2xl">
             <ul className="space-y-1">
@@ -159,7 +194,6 @@ export default function Header() {
                             href={child.href}
                             onClick={(e) => {
                               scrollToSection(e, child.href);
-                              handleNavClick();
                             }}
                             className="block px-6 py-2 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
                           >
@@ -174,7 +208,6 @@ export default function Header() {
                         href={item.href}
                         onClick={(e) => {
                           scrollToSection(e, item.href);
-                          handleNavClick();
                         }}
                         className="block px-4 py-2.5 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
                       >
@@ -186,8 +219,8 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-        </div>
+        </motion.div>
       </div>
-    </header>
+    </motion.header>
   )
 }

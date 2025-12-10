@@ -12,7 +12,7 @@ const contactOptions = [
     icon: Mail,
     label: "Email",
     value: "alfathirfahri23@gmail.com",
-    href: "mailto:alfathirfahri23@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=alfathirfahri23@gmail.com",
     color: "from-blue-500 to-indigo-500"
   },
   {
@@ -32,7 +32,7 @@ const contactOptions = [
   {
     icon: Calendar,
     label: "Availability",
-    value: "Mon-Fri 9AM-5PM",
+    value: "Always Open",
     href: "#",
     color: "from-purple-500 to-pink-500"
   },
@@ -45,7 +45,7 @@ const socialLinks = [
 
 export default function Contact() {
   return (
-    <RevealSection id="contact" className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
+    <RevealSection className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
       <div className="max-w-4xl mx-auto">
         <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <h2 className="section-title">
@@ -107,7 +107,7 @@ export default function Contact() {
         <div className="flex justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
           <HoverAnimation>
             <a
-              href="mailto:alfathirfahri23@gmail.com"
+              href="whatsapp://send?phone=6281460158336&text=Hello%20Fathir,%20I%20would%20like%20to%20get%20in%20touch%20with%20you."
               className="cta-button flex items-center justify-center gap-3 px-8 py-6 text-lg"
             >
               Send a Message

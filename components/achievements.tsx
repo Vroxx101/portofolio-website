@@ -29,7 +29,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <RevealSection id="achievements" className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
+    <RevealSection className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
       <div className="glass-card p-8 lg:p-12 rounded-3xl">
         <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <h2 className="section-title">

@@ -12,14 +12,14 @@ const projects: Project[] = [
     description: "Sistem web responsif untuk manajemen kehadiran siswa dengan basis data backend yang aman dan efisien.",
     image: "/project1.png",
     tech: ["PHP", "HTML", "CSS", "JS", "MySQL"],
-    link: "#", // Tambahkan URL proyek di sini
+    link: "https://absensi.afterschola.com/",
   },
   {
     title: "Company Profile",
     description: "Website profil perusahaan modern yang menampilkan informasi perusahaan, layanan, dan portofolio dengan desain responsif.",
     image: "/project3.png",
     tech: ["JavaScript", "HTML", "CSS", "Next.js"],
-    link: "#", // Tambahkan URL proyek di sini
+    link: "https://kka-afterschola.vercel.app/",
   },
   {
     title: "Portfolio Website",
@@ -33,21 +33,21 @@ const projects: Project[] = [
     description: "Platform kemitraan digital yang mempromosikan berbagai jenis pendidikan dan kursus untuk memperluas akses pendidikan.",
     image: "/project2.png",
     tech: ["JavaScript", "HTML", "CSS"],
-    link: "#", // Tambahkan URL proyek di sini
+    link: "https://kodingka.afterschola.com/",
   },
   {
     title: "Website Absensi Magang",
     description: "Solusi web responsif untuk manajemen kehadiran peserta magang dengan basis data terintegrasi untuk pelaporan otomatis.",
     image: "/project4.png",
     tech: ["JavaScript", "HTML", "CSS", "MySQL"],
-    link: "#", // Tambahkan URL proyek di sini
+    link: "https://magang.afterschola.com/",
   },
   {
     title: "Website Cofee Shop",
     description: "Website kafe kopi yang menawan dengan animasi halus, menu interaktif, dan sistem pemesanan yang mudah digunakan.",
     image: "/project5.jpg",
     tech: ["JavaScript", "HTML", "CSS", "MySQL"],
-    link: "#", // Tambahkan URL proyek di sini
+    link: "#",
   },
 ]
 
@@ -78,7 +78,7 @@ export default function Projects() {
     : projects.filter(project => project.tech.includes(activeFilter));
 
   return (
-    <RevealSection id="projects" className="container-custom py-16 lg:py-24" staggerChildren={true} childrenSelector=".animate-fade-in">
+    <RevealSection className="container-custom py-16 lg:py-24" staggerChildren={true} childrenSelector=".animate-fade-in">
       <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
         <h2 className="section-title">
           My <span>Projects</span>

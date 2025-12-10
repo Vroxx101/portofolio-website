@@ -9,7 +9,7 @@ const educationData = [
     period: "2023 - Present",
     school: "SMK Merdeka Bandung",
     description:
-      "Rekayasa Perangkat Lunak (Software Engineering). Focusing on web development and programming fundamentals.",
+      "(Software Engineering). Focusing on web development and programming fundamentals.",
   },
   {
     period: "2020 - 2023",
@@ -25,7 +25,7 @@ const educationData = [
 
 export default function Education() {
   return (
-    <RevealSection id="education" className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
+    <RevealSection className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
       <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
         <h2 className="section-title">
           My <span>Education</span>

@@ -25,7 +25,7 @@ const services = [
 
 export default function Services() {
   return (
-    <RevealSection id="services" className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
+    <RevealSection className="container-custom py-24 lg:py-32" staggerChildren={true} childrenSelector=".animate-fade-in">
       <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
         <h2 className="section-title">
           My <span>Services</span>
