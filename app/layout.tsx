@@ -72,6 +72,9 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     shortcut: "/logo.png",
   },
+  verification: {
+    google: "kseDHac5MrZx15_beLTq0JmJ04RGZDy1WkUiiNMM4x4",
+  },
 }
 
 export const viewport = {
