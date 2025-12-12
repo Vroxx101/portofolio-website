@@ -4,13 +4,6 @@ import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
-import About from "@/components/about"
-import Education from "@/components/education"
-import Services from "@/components/services"
-import Achievements from "@/components/achievements"
-import Projects from "@/components/projects"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 import ScrollDownIndicator from "@/components/scroll-down-indicator"
 import CustomCursor from "@/components/custom-cursor"
@@ -18,24 +11,27 @@ import SectionObserver from "@/components/section-observer"
 import { motion } from 'framer-motion'
 import { useLoading } from '@/contexts/loading-context'
 
-const ThreeDBackground = dynamic(() => import("@/components/three-d-background"), {
-  ssr: false,
-})
+const About = dynamic(() => import("@/components/about"), { ssr: false, loading: () => <div className="h-96" /> })
+const Education = dynamic(() => import("@/components/education"), { ssr: false, loading: () => <div className="h-96" /> })
+const Services = dynamic(() => import("@/components/services"), { ssr: false, loading: () => <div className="h-96" /> })
+const Achievements = dynamic(() => import("@/components/achievements"), { ssr: false, loading: () => <div className="h-96" /> })
+const Projects = dynamic(() => import("@/components/projects"), { ssr: false, loading: () => <div className="h-96" /> })
+const Contact = dynamic(() => import("@/components/contact"), { ssr: false, loading: () => <div className="h-96" /> })
+const Footer = dynamic(() => import("@/components/footer"), { ssr: false })
+const ThreeDBackground = dynamic(() => import("@/components/three-d-background"), { ssr: false })
 
 export default function Home() {
   const { finishLoading } = useLoading();
   const [hasLoaded, setHasLoaded] = useState(false)
 
   useEffect(() => {
-    // This effect ensures the ThreeJS background loads after the animation
     const timer = setTimeout(() => {
       setHasLoaded(true)
-    }, 1500); // Slightly before the loading screen disappears to prepare
+    }, 1500);
 
-    // Finish loading after components have loaded
     const finishTimer = setTimeout(() => {
       finishLoading();
-    }, 2200); // Finish slightly before the loading screen timeout
+    }, 2200);
 
     return () => {
       clearTimeout(timer);
@@ -45,20 +41,17 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
-      {/* 3D Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {hasLoaded && <ThreeDBackground />}
       </div>
 
-      {/* Gradient overlay for depth */}
       <div className="fixed inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-background/50 to-background" />
 
-      {/* Content with initial fade animation */}
       <motion.div
         className="relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2.5 }} // Delay until after loading screen
+        transition={{ duration: 0.8, delay: 2.5 }}
       >
         <CustomCursor />
         <Header />
@@ -73,58 +66,22 @@ export default function Home() {
             </motion.div>
           </SectionObserver>
           <SectionObserver id="about">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.2 }}
-            >
-              <About />
-            </motion.div>
+            <About />
           </SectionObserver>
           <SectionObserver id="education">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.4 }}
-            >
-              <Education />
-            </motion.div>
+            <Education />
           </SectionObserver>
           <SectionObserver id="services">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.6 }}
-            >
-              <Services />
-            </motion.div>
+            <Services />
           </SectionObserver>
           <SectionObserver id="achievements">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.8 }}
-            >
-              <Achievements />
-            </motion.div>
+            <Achievements />
           </SectionObserver>
           <SectionObserver id="projects">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 4.0 }}
-            >
-              <Projects />
-            </motion.div>
+            <Projects />
           </SectionObserver>
           <SectionObserver id="contact">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 4.2 }}
-            >
-              <Contact />
-            </motion.div>
+            <Contact />
           </SectionObserver>
         </main>
         <Footer />

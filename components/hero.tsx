@@ -129,6 +129,7 @@ export default function Hero() {
                   width={400}
                   height={400}
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               </motion.div>

@@ -74,6 +74,16 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport = {
+  themeColor: "#6C63FF",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+}
+
+
+
+
 export default function RootLayout({
   children,
 }: {
@@ -82,13 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Performance boost for fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <meta name="theme-color" content="#6C63FF" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
       </head>
 
       <body
